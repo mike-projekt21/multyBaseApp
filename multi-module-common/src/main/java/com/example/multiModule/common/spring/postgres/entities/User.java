@@ -12,10 +12,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.math.BigDecimal;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.multiModule.common.spring.utils.Generators.generateRandomFio;
+import static com.example.multiModule.common.spring.utils.Generators.generateRandomPhoneNumber;
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
 @Data
 @NoArgsConstructor
@@ -43,13 +45,12 @@ public class User {
 
 	@Column(name = "news")
 	@Builder.Default
-	private List<News> news = new ArrayList<News>();
+	private List<News> news = new ArrayList<>();
 
 	public static User getRandomUserEntity() {
-
 		return User.builder()
-				.login(generateRandomLogin())
-				.password(generateRandomPassword())
+				.login(randomAlphabetic(10))
+				.password(randomAlphabetic(10))
 				.fio(generateRandomFio())
 				.mobilePhone(generateRandomPhoneNumber())
 				.build();
