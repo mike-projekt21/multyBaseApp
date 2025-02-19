@@ -45,9 +45,9 @@ public class User {
 
 	@Column(name = "news")
 	@Builder.Default
-	private List<News> news = new ArrayList<>();
+	private List<Integer> newsIds = new ArrayList<>();
 
-	public static User getRandomUserEntity() {
+	public static User getRandomUser() {
 		return User.builder()
 				.login(randomAlphabetic(10))
 				.password(randomAlphabetic(10))

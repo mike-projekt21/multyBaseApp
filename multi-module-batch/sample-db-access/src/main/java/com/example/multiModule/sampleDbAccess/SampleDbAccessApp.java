@@ -2,6 +2,10 @@ package com.example.multiModule.sampleDbAccess;
 
 import java.util.List;
 
+import com.example.multiModule.common.spring.mongo.entities.News;
+import com.example.multiModule.common.spring.postgres.entities.User;
+import com.example.multiModule.common.spring.services.NewsService;
+import com.example.multiModule.common.spring.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -21,11 +25,32 @@ public class SampleDbAccessApp implements ApplicationRunner {
 	PosgresSampleService postgresSampleService;
 	@Autowired
 	MongoSampleService mongoSampleService;
+	@Autowired
+	NewsService newsService;
+	@Autowired
+	UserService userService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SampleDbAccessApp.class, args);
 	}
 
+	@Override
+	public void run(ApplicationArguments args) throws Exception {
+		//
+	}
+
+	public void createNews(User user){
+		News news = News.getDefaultNews(user.getLogin());
+		user.getNewsIds().add(news.getId());
+		newsService.save(news);
+		userService.find
+	}
+
+	public void createUser(){
+		User user = User.getRandomUser();
+		userService.save(user);
+	}
+/*
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		PostgresSample postgre = new PostgresSample();
@@ -40,4 +65,6 @@ public class SampleDbAccessApp implements ApplicationRunner {
 		List<MongoSample> findResult2 = mongoSampleService.findAll();
 		findResult2.forEach(System.out::println);
 	}
+ */
 }
+
