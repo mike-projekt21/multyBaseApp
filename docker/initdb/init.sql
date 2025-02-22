@@ -1,4 +1,8 @@
-CREATE TABLE IF NOT EXISTS postgres_sample (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
-);
+CREATE TABLE IF NOT EXISTS users(
+	id SERIAL PRIMARY KEY,
+	login VARCHAR(20) NOT NULL,
+	password VARCHAR(20) NOT NULL,
+	fio VARCHAR(255) NOT NULL,
+	mobile_phone VARCHAR(20),
+	news_ids VARCHAR(255)[]
+)

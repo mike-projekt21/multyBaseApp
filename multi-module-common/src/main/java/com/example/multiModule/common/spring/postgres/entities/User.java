@@ -3,8 +3,6 @@ package com.example.multiModule.common.spring.postgres.entities;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.example.multiModule.common.spring.utils.Generators.generateRandomFio;
 import static com.example.multiModule.common.spring.utils.Generators.generateRandomPhoneNumber;
@@ -33,11 +31,6 @@ public class User {
 
 	@Column(name = "mobile_phone")
 	private String mobilePhone;
-
-	@Column(name = "news")
-	@Builder.Default
-	@ElementCollection(targetClass=Integer.class)
-	private List<Integer> newsIds = new ArrayList<>();
 
 	public static User getRandomUser() {
 		return User.builder()

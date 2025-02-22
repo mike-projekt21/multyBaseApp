@@ -18,7 +18,7 @@ public class Generators extends RandomStringUtils{
     static {
         try {
             for (String line : Files.readAllLines(
-                    Paths.get("multi-module-common/src/main/resources/fios.csv"))){
+                    Paths.get("D:\\Idea_Projects\\multyBaseApp\\multi-module-common\\src\\main\\resources\\fios.csv"))){
                 SURNAME_BASE.add(line.split(";")[0]);
                 NAME_BASE.add(line.split(";")[1]);
             }

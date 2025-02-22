@@ -1,7 +1,5 @@
 package com.example.multiModule.sampleDbAccess;
 
-import java.util.List;
-
 import com.example.multiModule.common.spring.mongo.entities.News;
 import com.example.multiModule.common.spring.postgres.entities.User;
 import com.example.multiModule.common.spring.services.NewsService;
@@ -13,18 +11,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-import com.example.multiModule.common.spring.mongo.entities.MongoSample;
-import com.example.multiModule.common.spring.postgres.entities.PostgresSample;
-import com.example.multiModule.common.spring.services.MongoSampleService;
-import com.example.multiModule.common.spring.services.PosgresSampleService;
-
 @SpringBootApplication
 @ComponentScan(basePackages = { "${packages.common.component}", "${app.packages}" })
 public class SampleDbAccessApp implements ApplicationRunner {
-	@Autowired
-	PosgresSampleService postgresSampleService;
-	@Autowired
-	MongoSampleService mongoSampleService;
 	@Autowired
 	NewsService newsService;
 	@Autowired
@@ -35,27 +24,28 @@ public class SampleDbAccessApp implements ApplicationRunner {
 	}
 
 	@Override
-	public void run(ApplicationArguments args) throws Exception {
+	public void run(ApplicationArguments args) {
 		User testUser = createUser();
-		System.out.println(testUser);
-		//createNews(testUser);
+		createNews(testUser);
 	}
 
 	public void createNews(User user){
 		News news = News.getDefaultNews(user.getLogin());
-		//user.getNewsIds().add(news.getId());
 		newsService.save(news);
-		//userService.findOne(user.getId());
-		userService.save(user);
-
+		System.out.println(news);
 	}
 
 	public User createUser(){
 		User user = User.getRandomUser();
 		userService.save(user);
+		System.out.println(user);
 		return user;
 	}
 /*
+	public News findAllNewsByUserLogin(String login){
+		newsService.findAll();
+	}
+
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		PostgresSample postgre = new PostgresSample();
