@@ -1,17 +1,8 @@
 package com.example.multiModule.common.spring.postgres.entities;
 
-import com.example.multiModule.common.spring.mongo.entities.News;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +36,7 @@ public class User {
 
 	@Column(name = "news")
 	@Builder.Default
+	@ElementCollection(targetClass=Integer.class)
 	private List<Integer> newsIds = new ArrayList<>();
 
 	public static User getRandomUser() {

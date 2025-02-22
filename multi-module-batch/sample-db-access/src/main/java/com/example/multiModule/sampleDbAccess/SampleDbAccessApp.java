@@ -36,19 +36,24 @@ public class SampleDbAccessApp implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		//
+		User testUser = createUser();
+		System.out.println(testUser);
+		//createNews(testUser);
 	}
 
 	public void createNews(User user){
 		News news = News.getDefaultNews(user.getLogin());
-		user.getNewsIds().add(news.getId());
+		//user.getNewsIds().add(news.getId());
 		newsService.save(news);
-		userService.find
+		//userService.findOne(user.getId());
+		userService.save(user);
+
 	}
 
-	public void createUser(){
+	public User createUser(){
 		User user = User.getRandomUser();
 		userService.save(user);
+		return user;
 	}
 /*
 	@Override
