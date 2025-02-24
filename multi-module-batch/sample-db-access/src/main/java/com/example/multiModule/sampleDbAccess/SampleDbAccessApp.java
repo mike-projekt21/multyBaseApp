@@ -1,6 +1,6 @@
 package com.example.multiModule.sampleDbAccess;
 
-import com.example.multiModule.common.spring.mongo.entities.News;
+import com.example.multiModule.common.spring.postgres.entities.News;
 import com.example.multiModule.common.spring.postgres.entities.User;
 import com.example.multiModule.common.spring.services.NewsService;
 import com.example.multiModule.common.spring.services.UserService;

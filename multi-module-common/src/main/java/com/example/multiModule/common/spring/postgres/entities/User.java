@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import java.util.List;
+
 import static com.example.multiModule.common.spring.utils.Generators.generateRandomFio;
 import static com.example.multiModule.common.spring.utils.Generators.generateRandomPhoneNumber;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
@@ -33,6 +35,9 @@ public class User {
 
 	@Column(name = "mobile_phone")
 	private String mobilePhone;
+
+	@OneToMany(mappedBy = "user")
+	private List<News> news;
 
 	public static User getRandomUser() {
 		return User.builder()

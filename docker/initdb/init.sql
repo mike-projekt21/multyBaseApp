@@ -5,3 +5,9 @@ CREATE TABLE IF NOT EXISTS users(
 	fio VARCHAR(255) NOT NULL,
 	mobile_phone VARCHAR(20)
 );
+CREATE TABLE IF NOT EXISTS news(
+	id SERIAL PRIMARY KEY,
+	title VARCHAR(255) NOT NULL,
+	news_text VARCHAR(255),
+	user_login VARCHAR(20) REFERENCES users (login)
+)

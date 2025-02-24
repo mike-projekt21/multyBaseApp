@@ -9,6 +9,8 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.persistence.Id;
 
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,7 +32,7 @@ public class News {
 	public static News getDefaultNews(String userLogin) {
 		return News.builder()
 				.title("New news post")
-				.text("wefbwyuibferwyberfubwrefubreuybfberufbue")
+				.text(randomAlphabetic(100))
 				.userLogin(userLogin)
 				.build();
 	}

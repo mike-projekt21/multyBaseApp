@@ -1,7 +1,7 @@
 package com.example.multiModule.common.spring.services;
 
-import com.example.multiModule.common.spring.mongo.entities.News;
-import com.example.multiModule.common.spring.mongo.repositories.NewsRepository;
+import com.example.multiModule.common.spring.postgres.entities.News;
+import com.example.multiModule.common.spring.postgres.repositories.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +21,4 @@ public class NewsService {
 	public List<News> findAllByLogin(String login) {
 		return newsRepository.findByUserLogin(login);
 	}
-
 }
