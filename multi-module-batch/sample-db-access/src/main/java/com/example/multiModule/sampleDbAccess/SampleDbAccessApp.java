@@ -11,6 +11,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
+import java.time.LocalTime;
+import java.util.List;
+
 @SpringBootApplication
 @ComponentScan(basePackages = { "${packages.common.component}", "${app.packages}" })
 public class SampleDbAccessApp implements ApplicationRunner {
@@ -25,27 +28,37 @@ public class SampleDbAccessApp implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) {
-		User testUser = createUser();
-		createNews(testUser);
+		for (int i = 0; i<100; i++){
+			User testUser = createUser();
+			for (int j = 0; j<100; j++){
+				createNews(testUser.getLogin());
+			}
+		}
+//		User testUser = createUser();
+//		User testUser = userService.findAll()
+//		createNews("GLBMZZNVAd");
+//		findAllNewsByUserLogin("GLBMZZNVAd");
 	}
 
-	public void createNews(User user){
-		News news = News.getDefaultNews(user.getLogin());
+	public void createNews(String login){
+		News news = News.getDefaultNews(login);
 		newsService.save(news);
-		System.out.println(news);
+		System.out.println(LocalTime.now() + " " + news);
 	}
 
 	public User createUser(){
 		User user = User.getRandomUser();
 		userService.save(user);
-		System.out.println(user);
+		System.out.println(LocalTime.now() + " " + user);
 		return user;
 	}
-/*
-	public News findAllNewsByUserLogin(String login){
-		newsService.findAll();
-	}
 
+	public List<News> findAllNewsByUserLogin(String login){
+		List<News> newsList= newsService.findAllByLogin(login);
+		System.out.println(newsList);
+		return newsList;
+	}
+/*
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		PostgresSample postgre = new PostgresSample();

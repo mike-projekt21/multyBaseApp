@@ -12,6 +12,8 @@ import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Setter
+@Getter
 @Entity
 @Table(name = "users")
 public class User {

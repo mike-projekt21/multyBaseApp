@@ -18,5 +18,8 @@ public class NewsService {
 	public News save(News news) {
 		return newsRepository.save(news);
 	}
+	public List<News> findAllByLogin(String login) {
+		return newsRepository.findByUserLogin(login);
+	}
 
 }
