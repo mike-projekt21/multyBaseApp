@@ -20,6 +20,7 @@ public class PackageConfig {
 		private String component;
 		private Postgres postgres = new Postgres();
 		private Mongo mongo = new Mongo();
+		private Neo4j neo4j = new Neo4j();
 	}
 	
 	@Data
@@ -32,6 +33,13 @@ public class PackageConfig {
 	@Data
 	@NoArgsConstructor
 	public class Mongo {
+		private String entity;
+		private String repository;
+	}
+
+	@Data
+	@NoArgsConstructor
+	public class Neo4j {
 		private String entity;
 		private String repository;
 	}

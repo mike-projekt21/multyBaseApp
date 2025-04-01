@@ -1,6 +1,17 @@
 version: '3.1'
 
 services:
+  neo4j:
+    image: neo4j
+    container_name: "neo4j"
+    #restart: always
+    ports:
+      - 7474:7474
+      - 7687:7687
+    environment:
+      - NEO4J_AUTH=neo4j/multyBasetest
+    volumes:
+      - neo4j_data:/data
 
   mongo:
     image: mongo
@@ -30,4 +41,6 @@ volumes:
   postgresql:
     external: false
   mongodb:
+    external: false
+  neo4j_data:
     external: false

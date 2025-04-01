@@ -1,7 +1,8 @@
 package com.example.multiModule.sampleDbAccess;
 
 import com.example.multiModule.common.spring.mongo.entities.News;
-import com.example.multiModule.common.spring.postgres.entities.User;
+import com.example.multiModule.common.spring.neo4j.entities.FriendWith;
+import com.example.multiModule.common.spring.neo4j.entities.User;
 import com.example.multiModule.common.spring.services.NewsService;
 import com.example.multiModule.common.spring.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ public class SampleDbAccessApp implements ApplicationRunner {
 	NewsService newsService;
 	@Autowired
 	UserService userService;
+	@Autowired
+	UserService chatService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SampleDbAccessApp.class, args);
@@ -28,13 +31,9 @@ public class SampleDbAccessApp implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) {
-		for (int i = 0; i<100; i++){
-			User testUser = createUser();
-			for (int j = 0; j<100; j++){
-				createNews(testUser.getLogin());
-			}
-		}
-//		User testUser = createUser();
+		User testUser1 = createUser();
+		User testUser2 = createUser();
+		makeFriends(testUser1, testUser2);
 //		User testUser = userService.findAll()
 //		createNews("GLBMZZNVAd");
 //		findAllNewsByUserLogin("GLBMZZNVAd");
@@ -48,9 +47,11 @@ public class SampleDbAccessApp implements ApplicationRunner {
 
 	public User createUser(){
 		User user = User.getRandomUser();
-		userService.save(user);
-		System.out.println(LocalTime.now() + " " + user);
 		return user;
+	}
+
+	public void makeFriends(User user1, User user2){
+		user1.getFriendTo().add(new FriendWith(user2));
 	}
 
 	public List<News> findAllNewsByUserLogin(String login){

@@ -10,6 +10,12 @@ spring:
       host: localhost
       port: 27018
       database: mongo
+    neo4j:
+      host: localhost
+      port: 7474
+      database: neo4j
+      username: neo4j
+      password: test
   profiles:
     include: common
   jpa:
