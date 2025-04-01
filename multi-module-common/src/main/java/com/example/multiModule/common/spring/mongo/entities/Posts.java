@@ -14,7 +14,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Builder
 @Document(collection = "news")
-public class News {
+public class Posts {
 	@Id
 	private String id;
 
@@ -27,8 +27,8 @@ public class News {
 	@Field("user_login")
 	private String userLogin;
 
-	public static News getDefaultNews(String userLogin) {
-		return News.builder()
+	public static Posts getDefaultNews(String userLogin) {
+		return Posts.builder()
 				.title("New news post")
 				.text("wefbwyuibferwyberfubwrefubreuybfberufbue")
 				.userLogin(userLogin)

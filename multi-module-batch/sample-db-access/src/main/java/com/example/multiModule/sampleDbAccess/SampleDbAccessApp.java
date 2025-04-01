@@ -1,9 +1,9 @@
 package com.example.multiModule.sampleDbAccess;
 
-import com.example.multiModule.common.spring.mongo.entities.News;
+import com.example.multiModule.common.spring.mongo.entities.Posts;
 import com.example.multiModule.common.spring.neo4j.entities.FriendWith;
 import com.example.multiModule.common.spring.neo4j.entities.User;
-import com.example.multiModule.common.spring.services.NewsService;
+import com.example.multiModule.common.spring.services.PostsService;
 import com.example.multiModule.common.spring.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -19,7 +19,7 @@ import java.util.List;
 @ComponentScan(basePackages = { "${packages.common.component}", "${app.packages}" })
 public class SampleDbAccessApp implements ApplicationRunner {
 	@Autowired
-	NewsService newsService;
+	PostsService postsService;
 	@Autowired
 	UserService userService;
 	@Autowired
@@ -40,9 +40,9 @@ public class SampleDbAccessApp implements ApplicationRunner {
 	}
 
 	public void createNews(String login){
-		News news = News.getDefaultNews(login);
-		newsService.save(news);
-		System.out.println(LocalTime.now() + " " + news);
+		Posts posts = Posts.getDefaultNews(login);
+		postsService.save(posts);
+		System.out.println(LocalTime.now() + " " + posts);
 	}
 
 	public User createUser(){
@@ -54,10 +54,10 @@ public class SampleDbAccessApp implements ApplicationRunner {
 		user1.getFriendTo().add(new FriendWith(user2));
 	}
 
-	public List<News> findAllNewsByUserLogin(String login){
-		List<News> newsList= newsService.findAllByLogin(login);
-		System.out.println(newsList);
-		return newsList;
+	public List<Posts> findAllNewsByUserLogin(String login){
+		List<Posts> postsList = postsService.findAllByLogin(login);
+		System.out.println(postsList);
+		return postsList;
 	}
 /*
 	@Override

@@ -1,8 +1,10 @@
 package com.example.multiModule.common.spring.postgres.entities;
 
+import com.example.multiModule.common.spring.cassandra.entities.Message;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -24,5 +26,5 @@ public class Chat {
 	@Column(name = "login_u2")
 	private String loginUser2;
 
-	//private List<Message> messages;
+	private List<Message> messages;
 }
