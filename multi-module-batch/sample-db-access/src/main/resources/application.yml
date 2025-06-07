@@ -3,7 +3,9 @@ app:
 spring:
   datasource:
     postgres:
-      url: jdbc:postgresql://localhost:5433/postgres
+      host: localhost
+      port: 5433
+      database: postgres
       username: postgres
       password: postgres
     mongo:
@@ -15,6 +17,12 @@ spring:
       port: 7474
       database: neo4j
       username: neo4j
+      password: test
+    cassandra:
+      host: localhost
+      port: 9042
+      database: cassandra
+      username: cassandra
       password: test
   profiles:
     include: common

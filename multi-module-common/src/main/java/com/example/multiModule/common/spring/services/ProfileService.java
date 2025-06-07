@@ -1,4 +1,9 @@
 package com.example.multiModule.common.spring.services;
 
-public class ProfileService {
+import com.example.multiModule.common.spring.aggregation.Aggregation;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ProfileService implements Aggregation {
+
 }

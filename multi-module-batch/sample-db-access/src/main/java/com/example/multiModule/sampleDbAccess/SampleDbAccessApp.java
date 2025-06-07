@@ -3,6 +3,7 @@ package com.example.multiModule.sampleDbAccess;
 import com.example.multiModule.common.spring.mongo.entities.Posts;
 import com.example.multiModule.common.spring.neo4j.entities.FriendWith;
 import com.example.multiModule.common.spring.neo4j.entities.User;
+import com.example.multiModule.common.spring.services.MessageService;
 import com.example.multiModule.common.spring.services.PostsService;
 import com.example.multiModule.common.spring.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,8 @@ public class SampleDbAccessApp implements ApplicationRunner {
 	UserService userService;
 	@Autowired
 	UserService chatService;
+	@Autowired
+	MessageService messageService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SampleDbAccessApp.class, args);

@@ -37,10 +37,25 @@ services:
       POSTGRES_DB: postgres
       POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
 
+  cassandra:
+    image: cassandra
+    container_name: cassandra
+    #restart: always
+    ports:
+      - 9042:9042
+    environment:
+      - CASSANDRA_CLUSTER_NAME=mycluster
+      - CASSANDRA_USER=cassandra
+      - CASSANDRA_PASSWORD=test
+    volumes:
+      - cassandra-data:/var/lib/cassandra
+
 volumes:
   postgresql:
     external: false
   mongodb:
     external: false
   neo4j_data:
+    external: false
+  cassandra-data:
     external: false

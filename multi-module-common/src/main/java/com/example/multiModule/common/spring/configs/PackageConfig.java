@@ -21,6 +21,7 @@ public class PackageConfig {
 		private Postgres postgres = new Postgres();
 		private Mongo mongo = new Mongo();
 		private Neo4j neo4j = new Neo4j();
+		private Cassandra cassandra = new Cassandra();
 	}
 	
 	@Data
@@ -40,6 +41,13 @@ public class PackageConfig {
 	@Data
 	@NoArgsConstructor
 	public class Neo4j {
+		private String entity;
+		private String repository;
+	}
+
+	@Data
+	@NoArgsConstructor
+	public class Cassandra {
 		private String entity;
 		private String repository;
 	}
