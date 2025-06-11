@@ -34,14 +34,23 @@ public class SampleDbAccessApp implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) {
-		User testUser1 = createUser();
-		User testUser2 = createUser();
-		makeFriends(testUser1, testUser2);
+
+
+//		User testUser1 = createUser();
+//		User testUser2 = createUser();
+//		makeFriends(testUser1, testUser2);
 //		User testUser = userService.findAll()
 //		createNews("GLBMZZNVAd");
 //		findAllNewsByUserLogin("GLBMZZNVAd");
 	}
 
+	public void createMessage(String login){
+		Posts posts = Posts.getDefaultNews(login);
+		postsService.save(posts);
+		System.out.println(LocalTime.now() + " " + posts);
+	}
+
+/*
 	public void createNews(String login){
 		Posts posts = Posts.getDefaultNews(login);
 		postsService.save(posts);
@@ -62,7 +71,7 @@ public class SampleDbAccessApp implements ApplicationRunner {
 		System.out.println(postsList);
 		return postsList;
 	}
-/*
+
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		PostgresSample postgre = new PostgresSample();

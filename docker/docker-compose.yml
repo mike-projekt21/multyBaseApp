@@ -30,7 +30,7 @@ services:
       - 5433:5432
     volumes:
       - postgresql:/var/lib/postgresql/data
-      - ./initdb:/docker-entrypoint-initdb.d
+      - ./initdb/postgres:/docker-entrypoint-initdb.d
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -48,7 +48,8 @@ services:
       - CASSANDRA_USER=cassandra
       - CASSANDRA_PASSWORD=test
     volumes:
-      - cassandra-data:/var/lib/cassandra
+      - cassandra-data:/var/lib/cassandra/data
+      - ./initdb/cassandra:/docker-entrypoint-initdb.d
 
 volumes:
   postgresql:

@@ -10,6 +10,9 @@ packages:
     neo4j:
       entity: com.example.multiModule.common.spring.neo4j.entities
       repository: com.example.multiModule.common.spring.neo4j.repositories
+    cassandra:
+      entity: com.example.multiModule.common.spring.cassandra.entities
+      repository: com.example.multiModule.common.spring.cassandra.repositories
 
 spring:
   datasource:
